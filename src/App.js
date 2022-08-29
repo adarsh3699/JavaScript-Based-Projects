@@ -8,46 +8,46 @@ function App() {
     const [timePostion, setTimePostion] = useState(true);
 
     function handelSpeedChange(e) {
-        const speedVal = e.target.value ;
+        const speedVal = e.target.value;
         setSpeed(speedVal);
 
         if (time !== "" && speedPostion === true) {
-            setDistance(speedVal*time)
+            setDistance(speedVal * time);
         } else if (distance !== "") {
-            setTime(distance/speedVal)
-            setSpeedPostion(false)
+            setTime(distance / speedVal);
+            setSpeedPostion(false);
         }
     }
 
     function handelDistanceChange(e) {
-        const distVal = e.target.value ;
+        const distVal = e.target.value;
         setDistance(distVal);
 
         if (speed !== "") {
-            setTime(distVal/speed)
+            setTime(distVal / speed);
         } else if (time !== "") {
-            setSpeed(distVal/time)
+            setSpeed(distVal / time);
         }
     }
 
     function handelTimeChange(e) {
-        const timeVal = e.target.value ;
-        setTime(timeVal)
-        
+        const timeVal = e.target.value;
+        setTime(timeVal);
+
         if (distance !== "" && timePostion === true) {
-            setSpeed(distance/timeVal)
+            setSpeed(distance / timeVal);
         } else if (speed !== "") {
-            setDistance(speed*timeVal)
-            setTimePostion(false)
+            setDistance(speed * timeVal);
+            setTimePostion(false);
         }
-    }   
+    }
 
     function handelResetbtn() {
         setSpeed("");
-        setDistance("")
-        setTime("")
-        setTimePostion(true)
-        setSpeedPostion(true)
+        setDistance("");
+        setTime("");
+        setTimePostion(true);
+        setSpeedPostion(true);
     }
     return (
         <div id='app'>
@@ -59,13 +59,18 @@ function App() {
             </div>
             <div>
                 <div>Distance (meter)</div>
-                <input type="number" id="distance"  value={distance} onChange={handelDistanceChange} />
+                <input type="number" id="distance" value={distance} onChange={handelDistanceChange} />
             </div>
             <div>
                 <div>Time (sec)</div>
                 <input type="number" id="time" value={time} onChange={handelTimeChange} />
             </div>
             <button onClick={handelResetbtn}>Reset</button>
+            <div id='Concept'>
+                <b>Concept:-</b>
+                Write any two of them, and the third will be auto calculated.
+                I.e, if you write speed and distance, then time is automatically calculated.
+            </div>
         </div>
     );
 }
